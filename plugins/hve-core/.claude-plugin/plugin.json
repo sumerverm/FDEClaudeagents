@@ -1,0 +1,26 @@
+{
+  "name": "hve-core",
+  "displayName": "HVE Core (Claude Code)",
+  "version": "3.2.2-claude.1",
+  "description": "Opinionated, rapidly evolving HVE Core agentic SDLC patterns and tools",
+  "author": {
+    "name": "Microsoft (converted for Claude Code)",
+    "url": "https://www.microsoft.com"
+  },
+  "homepage": "https://microsoft.github.io/hve-core/",
+  "repository": "https://github.com/microsoft/hve-core",
+  "license": "MIT",
+  "keywords": [
+    "hve",
+    "hve-core",
+    "rpi",
+    "code-review",
+    "agents",
+    "skills"
+  ],
+  "metadata": {
+    "upstream": "microsoft/hve-core",
+    "upstreamVersion": "3.2.2",
+    "converter": "scripts/convert_hve.py"
+  }
+}

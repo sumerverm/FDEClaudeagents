@@ -1,4 +1,5 @@
 __pycache__/
 *.pyc
 .DS_Store
-hve-core/
+# an upstream microsoft/hve-core checkout at the repo root (not the converted plugin)
+/hve-core/
