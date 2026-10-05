@@ -238,4 +238,3 @@ Each `content.yaml` should contain a `speaker_notes:` field with the narration t
 | Authored slide animations missing after embedding    | `embed_audio.py` replaces existing `p:timing` with narration timing; re-apply animations in PowerPoint after embedding audio.                                             |
 | Slides no longer advance on click after embedding    | `embed_audio.py` sets `advClick="0"` for auto-advance. To re-enable, select all slides in PowerPoint and check **Advance Slide > On Mouse Click** in the Transitions tab. |
 | Video export shows "No timings recorded"             | Re-embed audio with the updated `embed_audio.py` which adds narration timing XML automatically.                                                                           |
-

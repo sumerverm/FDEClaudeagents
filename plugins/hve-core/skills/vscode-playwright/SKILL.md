@@ -215,4 +215,3 @@ Never use separate `mcp__playwright__browser_press_key` -> `mcp__playwright__bro
 | `Meta+P` triggers browser action                             | Keyboard shortcuts intercepted by browser                        | Use `page.keyboard.press('F1')` to open Command Palette                                                          |
 | Screenshot saved to wrong directory                          | `take_screenshot` saves relative to Playwright working directory | Copy screenshots to the target directory after capture                                                           |
 | Copilot Chat responses non-deterministic                     | Streaming token-by-token output                                  | Use `mcp__playwright__browser_wait_for` with expected text or time delay                                        |
-

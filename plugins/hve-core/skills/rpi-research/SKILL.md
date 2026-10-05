@@ -133,5 +133,3 @@ The primary artifact is the only research artifact. It owns synthesized question
 ## Final Response
 
 Return a concise, evidence-first response headed `## rpi-research: [Topic]`. Include research execution status, Research disposition, Planning Readiness or decision state, selected approach only when applicable, key evidence, alternatives, unresolved decisions or risks, research-only constraint status, artifact self-check, and the continuation record required by `references/research.md`. Follow Conversation guidance for conditional compaction advice, standalone or parent-owned continuation, the linked artifact table, and final next steps.
-
-

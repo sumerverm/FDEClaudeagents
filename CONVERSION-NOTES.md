@@ -47,6 +47,21 @@ Plugins cannot ship `.claude/rules/` or `commands/` (commands are the legacy for
 
 All four source layers land in `skills/`, so stems are resolved with the precedence **skill > orchestrator agent > prompt > instruction**. The full run renames: `code-review`, `documentation`, `functional-planner`, `hve-demo-material`, `rai-planner`, `pptx` (agents → `*-agent`); and `experiment-designer`, `git-merge`, `hve-builder`, `pptx`, `pull-request`, `sssc-planner` (instructions → `*-instructions`). Every cross-reference in the converted text points at the renamed slug.
 
+## Beyond the four artifact layers
+
+An audit of the published docs (https://microsoft.github.io/hve-core/) found these dependencies outside agents/prompts/instructions/skills, now covered in the repo:
+
+| Upstream expectation | Where it lives here |
+|---|---|
+| `.github/copilot-instructions.md` loaded as a global baseline (human-review checkbox rule, comment rules, tracking taxonomy) | `examples/CLAUDE.md`, to copy into each repo; only the general sections are carried over |
+| `.copilot-tracking/` gitignored, searched with `includeIgnoredFiles` | README setup step; the `copilot-tracking` and `copilot-tracking-location` skills get a Claude Code note (Grep/Glob skip gitignored files; use `rg --no-ignore` via Bash or `Read`) — added by `CLAUDE_NOTES` in the converter |
+| `docs/templates/*.md` and one accessibility runbook read from the target repo "if available" | `templates/`, with a README saying which agent reads which |
+| `.vscode/mcp.json` with `inputs` prompts | `examples/mcp.json` using `${ADO_ORG}` / `${ADO_TENANT:-}` expansion |
+| Tooling: `git`, `pwsh`, Node/`npx`, `uv`, `gh`, `jq` | README prerequisites table |
+| RPI day-to-day flow, `/clear` between phases, resume by artifact | README section 3 |
+
+Not carried over: VS Code `chat.*FilesLocations` settings, the Copilot commit-message setting, `yaml.schemas`, the VS Code extension, the installer's `.hve-tracking.json`, and the Docusaurus site itself (link to it instead).
+
 ## Deliberately left alone
 
 * **`.copilot-tracking/`** paths (130 skill files reference them). Keeping the name means Copilot and Claude users in the same repo share artifacts. Rename later with a single `sed` if the team wants.

@@ -262,4 +262,3 @@ Resolve `<powerpoint-skill-root>` from the loaded skill location before running 
 This recreates the virtual environment from scratch using `pyproject.toml` as the single source of truth. The `Invoke-PptxPipeline.ps1` orchestrator runs `uv sync` automatically on each invocation unless `-SkipVenvSetup` is passed.
 
 When `uv` itself is not available, install it first (see Installing uv above), then retry. When Python 3.11+ is not available, run `uv python install 3.11` to have uv fetch and manage the interpreter.
-

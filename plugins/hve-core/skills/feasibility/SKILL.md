@@ -83,4 +83,3 @@ Produce one durable Markdown feasibility study that remains useful to people and
 The Feasibility Study Interchange Profile, schema, template, examples, and validator are independently authored repository content licensed CC BY 4.0.
 
 Selected concepts are mapped to open specifications for interoperability vocabulary only. No upstream schema, example, or substantial prose is reproduced. See [provenance.md](references/provenance.md).
-

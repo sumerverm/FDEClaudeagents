@@ -141,5 +141,3 @@ Slide decks often contain multiple visual themes (title slides, content slides, 
 * Use gradient fills sparingly for visual emphasis on hero elements, section dividers, or background accents.
 * Keep gradient stops to 2–3 colors for readability. More stops increase visual complexity.
 * Specify gradient angle to control direction (0 = left-to-right, 90 = top-to-bottom, 270 = bottom-to-top).
-
-

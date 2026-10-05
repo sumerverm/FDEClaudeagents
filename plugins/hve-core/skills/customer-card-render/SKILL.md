@@ -161,4 +161,3 @@ For complete mapping details, see [references/mapping-spec.md](references/mappin
 | Template not found              | `--canonical-dir` contains unknown type   | Check frontmatter `type:` field against supported artifact types                                                         |
 | Empty output directory          | No canonical markdown files found         | Confirm `--canonical-dir` path and that files have `---` frontmatter                                                     |
 | PPTX build fails after generate | PowerPoint skill missing or not activated | Activate the `powerpoint` skill by name. When its content does not arrive, stop and report the build step as unavailable |
-

@@ -67,6 +67,24 @@ MCP_SERVERS: dict[str, str] = {
 }
 MCP_RE = re.compile(r"\bmcp_(" + "|".join(sorted(MCP_SERVERS, key=len, reverse=True)) + r")_([a-z0-9_]+)")
 
+# Claude Code notes appended to specific converted files (keyed by output slug)
+CLAUDE_NOTES: dict[str, str] = {
+    "copilot-tracking-location": (
+        "\n\n## Claude Code note\n\n"
+        "The `Grep` and `Glob` tools honor `.gitignore`, and `.copilot-tracking/` is gitignored, so they "
+        "return nothing from it and there is no include-ignored option. To find, list, or search tracking "
+        "artifacts use `Bash` (`rg --no-ignore <pattern> .copilot-tracking/`, `ls`, or `find`), or open a "
+        "known path directly with `Read`. The folder lives at the repository root; in a multi-root "
+        "workspace that is the first (primary) folder, never a plugin or tool checkout.\n"
+    ),
+    "copilot-tracking": (
+        "\n\n## Claude Code note\n\n"
+        "Add `.copilot-tracking/` to the repository's `.gitignore` before the first RPI run. Searching the "
+        "folder follows the `hve-core:copilot-tracking-location` skill: use `Bash` with `rg --no-ignore`, "
+        "`ls`, or `find`, or `Read` an exact path, because `Grep` and `Glob` skip gitignored files.\n"
+    ),
+}
+
 # Copilot frontmatter keys that have no Claude equivalent on agents
 AGENT_DROP_KEYS = {"handoffs", "agents", "model", "user-invocable", "disable-model-invocation",
                    "argument-hint", "tools", "mcp"}
@@ -239,7 +257,8 @@ class Converter:
             fm, body = split_frontmatter(skill_md.read_text(encoding="utf-8"))
             fm = {k: v for k, v in fm.items() if k in SKILL_KEEP_KEYS}
             fm.setdefault("name", name)
-            (dest / "SKILL.md").write_text(join_frontmatter(fm, self.rewrite_body(body)), encoding="utf-8")
+            (dest / "SKILL.md").write_text(
+                join_frontmatter(fm, self.rewrite_body(body).rstrip() + CLAUDE_NOTES.get(name, "") + "\n"), encoding="utf-8")
             # rewrite references/templates too (they carry the same host-specific tokens)
             for md in dest.rglob("*.md"):
                 if md.name != "SKILL.md":
@@ -376,7 +395,8 @@ class Converter:
                 new["paths"] = globs
             dest = self.plugin_dir / "skills" / slug / "SKILL.md"
             dest.parent.mkdir(parents=True, exist_ok=True)
-            dest.write_text(join_frontmatter(new, self.rewrite_body(body)), encoding="utf-8")
+            dest.write_text(join_frontmatter(new, self.rewrite_body(body).rstrip() + CLAUDE_NOTES.get(slug, "") + "\n"),
+                            encoding="utf-8")
             self.report["instructions"].append(slug)
 
     # --- manifest ------------------------------------------------------------------------------

@@ -258,5 +258,3 @@ See the arrow types above; `subgraph` blocks denote network or resource boundari
 * Note important inference decisions, such as implicit dependencies, when they affect the diagram.
 * Treat the diagram as a static representation of infrastructure sources, not a runtime execution view.
 * Keep the output focused on a single architecture scope so it remains readable.
-
-

@@ -100,5 +100,3 @@ Caveman (ultra): "Auth bug. `<` → `<=`. Fix:"
 ## Attribution
 
 Concept based on the [Caveman project](https://github.com/JuliusBrussee/caveman) (MIT license, Copyright (c) 2026 Julius Brussee). This SKILL.md is an original specification authored for hve-core; no upstream files are redistributed.
-
-

@@ -93,5 +93,3 @@ For each component, produce the standards mapping block defined in the skill ref
 ```
 
 Include justification for each mapped standard, explaining why the control is relevant to the specific component. Flag gaps where a standard should apply based on the cross-reference table but no corresponding control exists in the current architecture.
-
-

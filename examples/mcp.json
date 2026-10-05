@@ -1,5 +1,5 @@
 {
-  "_comment": "Copy to .mcp.json at the root of the repository you work in. Keep the server KEYS exactly as shown (github, ado, playwright, ...): the converted skills call tools as mcp__<key>__<tool>. Remove servers you do not use; usually keep github OR ado, not both. Mirrors hve-core's docs/getting-started/mcp-configuration.md.",
+  "_comment": "Copy to .mcp.json at the root of the repository you work in. Keep the server KEYS exactly as shown (github, ado, playwright, ...): the converted skills call tools as mcp__<key>__<tool>. Remove servers you do not use; usually keep github OR ado, not both. For ado, set ADO_ORG (and optionally ADO_TENANT) in your shell environment; Claude Code expands ${VAR} and ${VAR:-default} in .mcp.json. Mirrors hve-core's docs/getting-started/mcp-configuration.md.",
   "mcpServers": {
     "context7": {
       "type": "stdio",
@@ -13,7 +13,7 @@
     "ado": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@azure-devops/mcp", "YOUR_ADO_ORG", "-d", "core", "work", "work-items", "search", "repositories", "pipelines"]
+      "args": ["-y", "@azure-devops/mcp", "${ADO_ORG}", "--tenant", "${ADO_TENANT:-}", "-d", "core", "work", "work-items", "search", "repositories", "pipelines"]
     },
     "github": {
       "type": "http",

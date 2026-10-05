@@ -83,4 +83,3 @@ Load the matching reference when the team identifies its industry context.
     ├── industry-retail-cpg.md
     └── dt-coach-telemetry.md
 ```
-

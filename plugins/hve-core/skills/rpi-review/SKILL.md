@@ -87,5 +87,3 @@ Return the review record, final review execution status, final outcome, severity
 ## Final response
 
 Return review execution status separately from outcome, findings, validation coverage, blockers or open items, routed follow-up, and conditional compaction advice when warranted. Follow Conversation guidance for standalone or parent-orchestrated continuation, the linked artifact table, and final next steps.
-
-

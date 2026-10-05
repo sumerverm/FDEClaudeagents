@@ -62,3 +62,8 @@ Apply these conventions whenever an RPI, HVE Builder, or compatibility workflow 
 * Use descriptive headings and related plan or task markers for implementation evidence. Do not create a second per-entry identity scheme in the changes record.
 * Use `PC-xxx` only in the plan critique and `RV-xxx` only in the review record.
 * Use stable IDs, markers, and headings to navigate. Do not maintain line numbers, line ranges, or detail-line verification.
+
+## Claude Code note
+
+Add `.copilot-tracking/` to the repository's `.gitignore` before the first RPI run. Searching the folder follows the `hve-core:copilot-tracking-location` skill: use `Bash` with `rg --no-ignore`, `ls`, or `find`, or `Read` an exact path, because `Grep` and `Glob` skip gitignored files.
+

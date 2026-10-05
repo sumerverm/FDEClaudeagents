@@ -245,4 +245,3 @@ The automation marker `<!-- automation:security-scan:{rule_id} -->` is embedded 
 | `HTTP 403 Resource not accessible by integration`          | Missing `security_events` scope on token       | Re-authenticate: `gh auth refresh -s security_events` or set `GH_TOKEN` with appropriate scope                      |
 | Empty results `[]`                                         | Wrong `ref` format or no alerts on that branch | Omit `-f ref=` to search all branches, or use `refs/heads/main` format (not just `main`)                            |
 | `bash: jq: command not found`                              | `jq` not installed                             | Install via `brew install jq` (macOS), `apt-get install jq` (Debian/Ubuntu), or from <https://jqlang.github.io/jq/> |
-

@@ -23,3 +23,8 @@ Apply these rules in every workflow that creates, finds, lists, or reads files i
 * Turn on the tool's include-ignored or include-excluded option, such as `includeIgnoredFiles`, whenever you search, grep, list, or read `.copilot-tracking/` files. Limit those searches to the `.copilot-tracking/` folder so they do not scan ignored dependencies, build output, or secret files.
 * When a tool has no such option, list the folder or read the file at its exact path, or search only that folder from a terminal with ignore rules disabled, such as `rg --no-ignore <pattern> .copilot-tracking/`.
 * Treat an empty result from a search that applied ignore rules as inconclusive. Check the folder directly before concluding that a tracking file is missing, creating a replacement, or restarting work.
+
+## Claude Code note
+
+The `Grep` and `Glob` tools honor `.gitignore`, and `.copilot-tracking/` is gitignored, so they return nothing from it and there is no include-ignored option. To find, list, or search tracking artifacts use `Bash` (`rg --no-ignore <pattern> .copilot-tracking/`, `ls`, or `find`), or open a known path directly with `Read`. The folder lives at the repository root; in a multi-root workspace that is the first (primary) folder, never a plugin or tool checkout.
+

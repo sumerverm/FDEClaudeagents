@@ -480,5 +480,3 @@ Output is deterministic and renders only what the record already says, adding no
 * Treat this skill as the default accessibility entrypoint for planning and review workflows.
 * Resolve framework and phase guidance through this skill instead of duplicating its internal reference paths in agents or instructions.
 * Use the scanner CLI when you need normalized findings from an accessibility scan.
-
-
