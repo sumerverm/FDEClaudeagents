@@ -1,0 +1,32 @@
+{
+  "_comment": "Copy to .mcp.json at the root of the repository you work in. Keep the server KEYS exactly as shown (github, ado, playwright, ...): the converted skills call tools as mcp__<key>__<tool>. Remove servers you do not use; usually keep github OR ado, not both. Mirrors hve-core's docs/getting-started/mcp-configuration.md.",
+  "mcpServers": {
+    "context7": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "microsoft-docs": {
+      "type": "http",
+      "url": "https://learn.microsoft.com/api/mcp"
+    },
+    "ado": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@azure-devops/mcp", "YOUR_ADO_ORG", "-d", "core", "work", "work-items", "search", "repositories", "pipelines"]
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "figma": {
+      "type": "http",
+      "url": "https://mcp.figma.com/mcp"
+    }
+  }
+}
