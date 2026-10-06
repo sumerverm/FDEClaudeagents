@@ -13,9 +13,32 @@ From the Claude Code terminal or chat panel:
 /plugin install hve-core@hve-claude
 ```
 
-For a local trial without installing, start Claude Code with `claude --plugin-dir ./plugins/hve-core` from a clone of this repo.
+The first command clones this repo (about 30 MB) with git and registers it as a marketplace named `hve-claude`; the second installs the `hve-core` plugin from it. Both can also be run from a normal terminal as `claude plugin marketplace add sumerverm/FDEClaudeagents` and `claude plugin install hve-core@hve-claude`.
 
-Verify with `/plugin` (the plugin should be listed and enabled) and type `/hve-core:` to see the commands.
+Verify with `/plugin` (the plugin should be listed and enabled) and type `/hve-core:` to see the commands. If the commands don't appear in an already-open session, run `/reload-plugins`.
+
+### If the marketplace add fails
+
+The add step shells out to `git clone`, with interactive prompts disabled, so anything that would make `git clone https://github.com/sumerverm/FDEClaudeagents.git` prompt or hang in your terminal makes it fail here. In order of likelihood on a managed work laptop:
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| `SSH authentication failed` / `HTTPS authentication failed` / `terminal prompts disabled` | Claude Code prefers SSH when a GitHub SSH key looks configured; a passphrase-protected or work-account key can't be used non-interactively | Set `CLAUDE_CODE_PLUGIN_PREFER_HTTPS=1` in your shell (PowerShell: `$env:CLAUDE_CODE_PLUGIN_PREFER_HTTPS = "1"`), restart Claude Code, retry. The repo is public, so HTTPS needs no credentials |
+| `Git clone timed out after 120s` | Slow or proxied network | `export CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS=300000` (PowerShell: `$env:CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS = "300000"`), retry in the same shell |
+| `Command 'git' not found or is in an unsafe location` | Git not on `PATH` (Windows) | Install Git for Windows, open a new terminal, confirm `git --version`, retry |
+| `Marketplace source ... is blocked by enterprise policy` / `not in the allowed marketplace list` | Your organization's managed Claude Code settings restrict marketplaces | An admin must allow `sumerverm/FDEClaudeagents`; or use the local-directory method below, which may also be blocked (`disableSideloadFlags`) |
+| `Plugin "hve-core" not found in marketplace` | Install run before the add, or marketplace name mistyped | Run the add first; the install target is exactly `hve-core@hve-claude` |
+
+**Fallback: install from a local copy.** Download the repo (`git clone` in your own terminal, or **Code → Download ZIP** on GitHub and extract it), then point Claude Code at the extracted folder, which is the marketplace root:
+
+```text
+/plugin marketplace add C:\path\to\FDEClaudeagents
+/plugin install hve-core@hve-claude
+```
+
+This gives the same result as the GitHub method, except updates come from re-downloading rather than `/plugin marketplace update`.
+
+For a one-off trial without installing anything, `claude --plugin-dir ./FDEClaudeagents/plugins/hve-core` works too. Point it at the `plugins/hve-core` folder, not the repo root: the repo root is a marketplace, and `--plugin-dir` on it loads silently with nothing in it.
 
 ## 2. Set up each repository you use it in
 
